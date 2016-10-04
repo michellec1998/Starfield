@@ -1,14 +1,15 @@
 //your code here
 NormalParticle tony = new NormalParticle();
-//NormalParticle[] starks = new NormalParticle[10];
+NormalParticle[] starks = new NormalParticle[50];
+
 void setup()
 {
 	size (500, 500);
 
-	/*for (int a = 0; a < starks.length; a ++)
+	for (int a = 0; a < starks.length; a ++)
 	{
 		starks[a] = new NormalParticle();
-	} */
+	} 
 }
 void draw()
 {
@@ -16,16 +17,16 @@ void draw()
 	tony.move();
 	tony.show();
 
-	/*for (int a = 0; a < starks.length; a ++)
+	for (int a = 0; a < starks.length; a ++)
 	{
 		starks[a].move();
 		starks[a].show();
-	} */
-
+	} 
+  
 }
 class NormalParticle
 {
-	double myX, myY;
+	float myX, myY;
 	float dAngle, dSpeed;
 	int myColor;
 
@@ -33,23 +34,29 @@ class NormalParticle
 	{
 		myX = 250;
 		myY = 250;
-		//myColor= color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255);
-		//spd = speed
-		//ang = angle 
+
 	} 
 	void move()
 	{
 		//myX = myX + (double)(Math.cos(dAngle)* (dSpeed);
 		//myY = myY + (double)(Math.sin(dAngle)* (dSpeed);
-		myX = myX + (double)(Math.cos(dAngle)*5)-2;
-		myY = myY + (double)(Math.sin(dSpeed)*5)-2;
+		myX = myX + (int)(Math.cos(dAngle)*(int)(Math.random()*30)-10);
+		myY = myY + (int)(Math.sin(dSpeed)*(int)(Math.random()*20)-5);
 	}
 	void show()
 	{
-		stroke (255);
+		stroke ( (int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255) ) ;
 		strokeWeight(10);
-		point (myX, myY);
+		point ((float)myX, (float)myY);
 	}
+
+  void mousePressed()
+  {
+    myX = mouseX;
+    myY = mouseY;
+    redraw();
+  }
+  
 }
 interface Particle
 {
@@ -63,4 +70,3 @@ class JumboParticle //uses inheritance
 {
 	//your code here
 }
-
